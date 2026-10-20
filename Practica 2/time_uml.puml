@@ -1,0 +1,33 @@
+@startuml
+skinparam classAttributeIconSize 0
+class Time {
+  + {static} TIME_FORMATS : tuple[str, str, str]
+  + {static} time_count : int
+  - __hours : int
+  - __minutes : int
+  - __seconds : int
+  - __time_format : str
+  + __init__() : None
+  + hours : int <<property>>
+  + minutes : int <<property>>
+  + seconds : int <<property>>
+  + time_format : str <<property>>
+  - __assign_format(time_format: str) : bool
+  - __is_24hour_format() : bool
+  # _is_valid_time(hours: int, minutes: int, seconds: int) : bool
+  + set_time(hours: int, minutes: int, seconds: int, time_format: str) : bool
+  + get_time() : tuple[int, int, int, str]
+  + {static} from_string(time_string: str) : Time | None
+  + {static} is_valid_format(time_format: str) : bool
+  + {static} get_time_count() : int
+}
+note right of Time::from_string
+  Método de clase (@classmethod)
+end note
+note right of Time::get_time_count
+  Método de clase (@classmethod)
+end note
+note right of Time::is_valid_format
+  Método estático (@staticmethod)
+end note
+@enduml
