@@ -29,3 +29,21 @@ class MatrizFloat:
         if m1._matriz is None or m2._matriz is None:
             return False
         return m1._nfil == m2._nfil and m1._ncol == m2._ncol
+    
+    def crear_matriz2D(self, nfil: int, ncol: int) -> None:
+        """Crea una matriz bidimensional de ceros."""
+        
+        self._matriz = np.zeros((nfil, ncol), dtype=self.TIPO_DATO)
+        self._nfil = nfil
+        self._ncol = ncol
+
+    def crear_matriz1D(self, nElementos: int) -> None:
+        
+        """Crea una matriz de una fila y nElementos columnas."""
+        
+        self.crear_matriz2D(1, nElementos)
+        
+    def existe(self) -> bool:
+        """"Comprueba si la matriz existe y no está vacía"""
+        
+        return self._matriz is not None and self._matriz.size > 0
