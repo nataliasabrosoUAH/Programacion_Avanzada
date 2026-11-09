@@ -183,7 +183,20 @@ def display_time(time: Time) -> str:
 def main() -> None:
     """Ejecuta el menú de gestión de horas hasta que se elige terminar."""
     current_time = Time()
+    ahora = Time()
+    
+    current_time.set_time(10, 20, 30, "AM")
+    ahora.set_time(10, 48, 30, "AM")
+    
+    if (Time.is_valid_format("Pepe")):
+        print ("Es valido")
+    else:
+        print ("no es valido")
 
+    horas = Time.from_string("PM")
+    print(display_time(current_time))
+
+    
     while True:
         print("\n--- GESTIÓN DE HORAS ---")
         print("1. Introducir una nueva hora")
