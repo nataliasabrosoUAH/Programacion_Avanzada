@@ -47,3 +47,37 @@ class MatrizFloat:
         """"Comprueba si la matriz existe y no está vacía"""
         
         return self._matriz is not None and self._matriz.size > 0
+    
+    def introducir(self) -> None:
+        """Permite al usuario introducir los valores de la matriz."""
+        
+        if not self.existe():
+            raise ValueError("La matriz no está creada.")
+        from utils import leer_float
+        for i in range(self._nfil):
+            for j in range(self._ncol):
+                self._matriz[i, j] = leer_float(f"Introduce el elemento [{i}, {j}]: ")
+    
+    def mostrar(self) -> None:
+        """Muestra las dimensiones y los elementos de la matriz en pantalla."""
+        
+        if not self.existe():
+            print("La matriz no está creada.")
+            return
+        
+        print(f"Dimensiones: {self._nfil} x {self._ncol}")
+        print(self._matriz)
+        
+    # ===========================================================
+    # OPERACIONES ALGEBRAICAS
+    # ===========================================================
+
+    def sumar_matrices(self, otra_matriz: "MatrizFloat") -> "MatrizFloat":
+        """Suma dos matrices y devuelve una nueva matriz."""
+        if not self.mismas_dimensiones(self, otra_matriz):
+            raise ValueError("Las matrices no tienen las mismas dimensiones.")
+        resultado = MatrizFloat()
+        resultado._matriz = self._matriz + otra_matriz._matriz
+        resultado._nfil = self._nfil
+        resultado._ncol = self._ncol
+        return resultado
