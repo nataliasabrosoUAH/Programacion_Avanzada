@@ -81,3 +81,13 @@ class MatrizFloat:
         resultado._nfil = self._nfil
         resultado._ncol = self._ncol
         return resultado
+    
+    def restar_matrices(self, otra_matriz: "MatrizFloat") -> "MatrizFloat":
+            """Resta dos matrices y devuelve una nueva matriz."""
+            if not self.mismas_dimensiones(self, otra_matriz):
+                raise ValueError("Las matrices no tienen las mismas dimensiones.")
+            resultado = MatrizFloat()
+            resultado._matriz = self._matriz - otra_matriz._matriz
+            resultado._nfil = self._nfil
+            resultado._ncol = self._ncol
+            return resultado
